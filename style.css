@@ -1,0 +1,173 @@
+body {
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* Estilos para la sección superior */
+.top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    margin-right: 10px;
+}
+input[type="color"] {
+    margin-right: 10px;
+    padding: 10px;
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    width: 100px;
+    height: 40px;
+}
+
+button {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+button[type="reset"] {
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+button[type="submit"] {
+    padding: 10px;
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+/* Estilos para la sección inferior */
+#autor-container {
+    position: absolute;
+    font-size: 23px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: left;
+    top: 100px;
+    padding: 10px;
+    margin: 10px;
+    /* border: solid 1px black; */
+    width: 170px;
+    height: 30px;
+}
+
+/* Estilos para el canvas */
+#canvas {
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 767px) {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    #autor {
+        margin-bottom: 10px;
+        width: 80%;
+    }
+
+    #color {
+        margin-bottom: 10px;
+        width: 80%;
+    }
+
+    #download {
+        width: 80%;
+    }
+
+    #canvas-container {
+        width: 100%;
+    }
+
+    #canvas {
+        width: 100%;
+    }
+
+    #autor-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* Estilos para tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    #autor {
+        margin-bottom: 10px;
+        width: 50%;
+    }
+
+    #color {
+        margin-bottom: 10px;
+        width: 50%;
+    }
+
+    #download {
+        width: 50%;
+    }
+
+    #canvas-container {
+        width: 100%;
+    }
+
+    #canvas {
+        width: 100%;
+    }
+
+    #autor-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}

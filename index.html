@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Playground en Canvas</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="top">
+                <label for="autor">autor: </label>
+                <input type="text" name="autor" id="autor" />
+                <label for="color">color: </label>
+                <input type="color" id="color" value="#000000" />
+                <button type="reset" onclick="reset()">Reset</button>
+                <button type="submit" id="download" onclick="exportImage()">
+                    Descargar
+                </button>
+            </div>
+        </div>
+
+        <!-- Contenedor para el canvas y el div con el nombre del autor -->
+        <div id="canvas-container">
+            <canvas id="canvas" width="1500" height="700"> </canvas>
+            <div id="autor-container"></div>
+        </div>
+
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+        <script>
+            let autor = document.getElementById("autor");
+            let canvas = document.getElementById("canvas");
+            let context = canvas.getContext("2d");
+            let x = 0;
+            let y = 0;
+            let width = 1500;
+            let height = 700;
+
+            let colorPicker = (document.getElementById("color").onchange =
+                function () {
+                    colorPicker = this.value;
+                });
+
+            let painting = false;
+            let lastX = 0;
+            let lastY = 0;
+
+            canvas.addEventListener("mousedown", (event) => {
+                painting = true;
+                lastX = event.pageX - canvas.offsetLeft;
+                lastY = event.pageY - canvas.offsetTop;
+            });
+
+            canvas.addEventListener("mouseup", () => {
+                painting = false;
+            });
+
+            canvas.addEventListener("mousemove", (event) => {
+                if (painting) {
+                    let currentX = event.pageX - canvas.offsetLeft;
+                    let currentY = event.pageY - canvas.offsetTop;
+
+                    context.beginPath();
+                    context.moveTo(lastX, lastY);
+                    context.lineTo(currentX, currentY);
+                    context.strokeStyle = colorPicker;
+                    context.lineWidth = 10;
+                    context.stroke();
+
+                    lastX = currentX;
+                    lastY = currentY;
+                }
+            });
+
+            // reset painting
+            function reset() {
+                context.fillStyle = "white";
+                context.fillRect(x, y, width, height);
+            }
+            // set autor name in p tag REAL TIME
+            autor.addEventListener("input", () => {
+                let autorContainer = document.getElementById("autor-container");
+                autorContainer.innerHTML = "By: " + autor.value;
+            });
+
+            // download with html2canvas
+            const exportImage = () => {
+                let autorContainer = document.getElementById("autor-container");
+                html2canvas(document.querySelector("#canvas-container")).then(
+                    function (canvas) {
+                        // Crear un elemento <a>
+                        let enlace = document.createElement("a");
+                        // Establecer el atributo href del enlace
+                        enlace.download = `boceto.png`;
+                        enlace.href = canvas.toDataURL("image/png");
+                        // Hacer clic en el enlace
+                        enlace.click();
+                    }
+                );
+            };
+        </script>
+    </body>
+</html>
