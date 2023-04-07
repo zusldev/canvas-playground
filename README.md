@@ -1,4 +1,4 @@
 # canvas-playground
-## zusldevplayground.netlify.app
+## https://zusldevplayground.netlify.app/
 for fun
 
